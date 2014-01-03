@@ -1,7 +1,7 @@
-;(function ( $, window, document ) {
+;(function ( $, window) {
 
     var defaults = {
-        modalClass: 'reveal-modal',
+        modalClassSelector: '.reveal-modal',
         outerPadding: 250,
         minHeight: 250,
       };
@@ -10,7 +10,7 @@
       // Plugin functionality is trigger by a window event called 'modal-opened'
       // grab the opened modal; get the party started
       // adding the class "no-resize" to a modal will prevent this plugin from modifying the size of the modal
-      $("."+defaults.modalClass+"[style*='visible']:not(.no-resize)").modalResize();
+      $(defaults.modalClassSelector + "[style*='visible']:not(.no-resize)").modalResize();
     });
     
 
@@ -22,7 +22,6 @@
 
     ModalResize.prototype = {
       init : function () {
-          // use this.element and this.options
           this.outerPadding = this.options.outerPadding;
           this.minHeight = this.options.minHeight;
           this.startingHeight = $(this.element).height();
@@ -53,4 +52,4 @@
         });
     }
 
-})( jQuery, window, document );
+})( jQuery, window);
